@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class ItemList extends Component {
 
@@ -8,6 +9,7 @@ class ItemList extends Component {
 	            <div className="panel panel-primary"> 
 	              <div className="panel-heading"><h1 className="panel-title">List Products</h1></div> 
 	              <div className="panel-body" id="list-product">
+	              
 	                {/* PRODUCT : START */}
 	                <div className="media product">
 	                  <div className="media-left">
@@ -23,6 +25,7 @@ class ItemList extends Component {
 	                  </div>
 	                </div>
 	                {/* PRODUCT : END */}
+
 	                {/* PRODUCT : START */}
 	                <div className="media product">
 	                  <div className="media-left">
@@ -37,6 +40,7 @@ class ItemList extends Component {
 	                  </div>
 	                </div>
 	                {/* PRODUCT : END */}
+
 	                {/* PRODUCT : START */}
 	                <div className="media product">
 	                  <div className="media-left">
@@ -52,6 +56,7 @@ class ItemList extends Component {
 	                  </div>
 	                </div>
 	                {/* PRODUCT : END */}
+
 	                {/* PRODUCT : START */}
 	                <div className="media product">
 	                  <div className="media-left">
@@ -67,6 +72,7 @@ class ItemList extends Component {
 	                  </div>
 	                </div>
 	                {/* PRODUCT : END */}
+
 	              </div>
 	            </div>
 	          </div>
@@ -75,4 +81,11 @@ class ItemList extends Component {
 
 }
 
-export default ItemList;
+const mapStateToProps = (state) => {
+	console.log(state);
+	return {
+		items: null
+	}
+}
+
+export default connect(mapStateToProps, null)(ItemList);
