@@ -4,6 +4,7 @@ import './App.css';
 
 class App extends Component {
   render() {
+    //console.log(PUBLIC_URL);
     return (
       <div className="container">
         {/* TITLE : START */}
@@ -21,7 +22,7 @@ class App extends Component {
                 <div className="media product">
                   <div className="media-left">
                     <a href="">
-                      <img className="media-object" src="%PUBLIC_URL%/images/aplusautomation.jpg" alt="charmander" />
+                      <img className="media-object" src={process.env.PUBLIC_URL + '/images/aplusautomation.jpg'} alt="charmander" />
                     </a>
                   </div>
                   <div className="media-body">
@@ -36,7 +37,7 @@ class App extends Component {
                 <div className="media product">
                   <div className="media-left">
                     <a href="">
-                      <img className="media-object" src="%PUBLIC_URL%/images/aplus-media.jpg" alt="charmander" />
+                      <img className="media-object" src={process.env.PUBLIC_URL + '/images/aplus-media.jpg'} alt="charmander" />
                     </a>
                   </div>
                   <div className="media-body">
@@ -50,7 +51,7 @@ class App extends Component {
                 <div className="media product">
                   <div className="media-left">
                     <a href="">
-                      <img className="media-object" src="%PUBLIC_URL%/images/robo_fig_combo.jpg" alt="charmander" />
+                      <img className="media-object" src={process.env.PUBLIC_URL + '/images/robo_fig_combo.jpg'} alt="charmander" />
                     </a>
                   </div>
                   <div className="media-body">
@@ -65,7 +66,7 @@ class App extends Component {
                 <div className="media product">
                   <div className="media-left">
                     <a href="">
-                      <img className="media-object" src="%PUBLIC_URL%/images/target-leap-frog.jpg" alt="target-leap-frog" />
+                      <img className="media-object" src={process.env.PUBLIC_URL + '/images/target-leap-frog.jpg'} alt="target-leap-frog" />
                     </a>
                   </div>
                   <div className="media-body">
