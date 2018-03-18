@@ -16,7 +16,7 @@ class Item extends Component {
           <h4 className="media-heading">{name}</h4>
           <p>{description}</p>
 
-          <ItemForm inventory={inventory} price={price} id={id} />
+          <ItemForm inventory={inventory} price={price} id={id} item={this.props.item} />
 
         </div>
       </div>

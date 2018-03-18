@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect }			from 'react-redux';
+import { AcAddToCart }		from '../../actions/index';
 
 class ItemForm extends Component {
 
@@ -12,10 +14,6 @@ class ItemForm extends Component {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		console.log(nextProps);
-	}
-
 	handleChange = (e) => {
 		var name 	= e.target.name;
 		var value 	= e.target.value;
@@ -26,8 +24,9 @@ class ItemForm extends Component {
 	}
 
 	handleClick = (e) => {
-		console.log(this.state);
 		e.preventDefault();
+		this.props.item.quantity = this.state.quantity;
+		this.props.addToCart(this.props.item);
 	}
 
 	render() {
@@ -50,4 +49,14 @@ class ItemForm extends Component {
 
 }
 
-export default ItemForm;
+const mapDispatchToProps = (dispatch) => {
+
+	return {
+		addToCart: (item) => {
+			dispatch(AcAddToCart(item));
+		}
+
+	}
+}
+
+export default connect(null, mapDispatchToProps)(ItemForm);

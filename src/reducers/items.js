@@ -22,7 +22,7 @@ var defaultState = [
 		name: 'robo fig combo',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dicta asperiores veniam repellat unde debitis quisquam magnam magni ut deleniti!',
 		price: 15,
-		inventory: 0,
+		inventory: 2,
 		image: 'robo_fig_combo.jpg'
 	},
 	{
