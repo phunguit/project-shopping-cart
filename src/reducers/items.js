@@ -5,7 +5,7 @@ var defaultState = [
 		id: uuidv4(),
 		name: 'aplusautomation',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dicta asperiores veniam repellat unde debitis quisquam magnam magni ut deleniti!',
-		price: 12,
+		price: 18,
 		inventory: 1,
 		image: 'aplusautomation.jpg'
 	},
