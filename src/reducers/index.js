@@ -1,10 +1,10 @@
 import { combineReducers }		from 'redux';
 import items					from './items';
-import itemToCart				from './itemToCart';
+import cartItems				from './cartItems';
 
 var reducers = combineReducers({
 	items,
-	itemToCart
+	cartItems
 });
 
 export default reducers;
