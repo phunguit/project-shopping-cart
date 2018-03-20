@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
 import { connect }			from 'react-redux';
+import CartItem 			from './CartItem';
 
 class CartList extends Component {
 
 	render() {
+		var { cartItems }	= this.props;
+		var statusCart		= null;
+
+		if(cartItems.length === 0) {
+			statusCart = <tr><th colSpan={6}>Empty product in your cart</th></tr>;
+		}
+
+		var cartEleItems = cartItems.map((item, index) => {
+			return (
+				<CartItem key={index} item={item} />
+			);
+		});
+		//var cartEleItems = null;
+
 		return (
 			<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 	            <div className="panel panel-danger"> 
@@ -20,23 +35,10 @@ class CartList extends Component {
 	                      <th width="25%">Action</th>
 	                    </tr>
 	                  </thead>
-	                  <tbody id="my-cart-body">
-	                    {/* CART BODY */}
-	                    <tr>
-	                      <th scope="row">1</th>
-	                      <td>Lorem ipsum.</td>
-	                      <td>12 USD</td>
-	                      <td><input name="cart-item-quantity-1" type="number" defaultValue={1} min={1} /></td>
-	                      <td><strong>12 USD</strong></td>
-	                      <td>
-	                        <a className="label label-info update-cart-item" href="" data-product>Update</a>
-	                        <a className="label label-danger delete-cart-item" href="" data-product>Delete</a>
-	                      </td>
-	                    </tr>
-	                  </tbody>
+	                  <tbody id="my-cart-body">{cartEleItems}</tbody>
 	                  <tfoot id="my-cart-footer">
 	                    {/* CART FOOTER */}
-	                    <tr><th colSpan={6}>Empty product in your cart</th></tr>
+	                    {statusCart}
 	                    <tr>
 	                      <td colSpan={4}>There are <b>5</b> items in your shopping cart.</td>
 	                      <td colSpan={2} className="total-price text-left">12 USD</td>
@@ -53,8 +55,6 @@ class CartList extends Component {
 }
 
 const mapStateToProps = (state) => {
-	
-	console.log(state.cartItems);
 	return {
 		cartItems: state.cartItems
 	}
