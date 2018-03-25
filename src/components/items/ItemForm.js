@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect }			from 'react-redux';
 import { AcAddToCart }		from '../../actions/index';
+import { filter }			from 'lodash';
 
 class ItemForm extends Component {
 
@@ -26,12 +27,22 @@ class ItemForm extends Component {
 		e.preventDefault();
 		var oldQuantity = 0;
 		
-		if(this.props.item.quantity !== undefined) {
-			oldQuantity = this.props.item.quantity;
+		var itemFromCart = filter(this.props.cartItems, (item, index) => {
+			return item.id === this.props.item.id;
+		});
+
+		if(itemFromCart.length > 0) {
+			//console.log(itemFromCart[0].quantity);
+			oldQuantity = itemFromCart[0].quantity;
 		}
+
+		/*if(this.props.item.quantity !== undefined) {
+			oldQuantity = this.props.item.quantity;
+		}*/
 		
 		this.props.item.quantity = this.state.quantity + oldQuantity;
 		this.props.addToCart(this.props.item);
+		
 	}
 
 	render() {

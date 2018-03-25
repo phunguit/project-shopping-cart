@@ -7,7 +7,15 @@ const cartItems = (state = defaultState, action) => {
 	switch(action.type) {
 
 		case Action.ADD_TO_CART:
-			console.log(uniqBy([...state, action.item], 'id'));
+			console.log(action.item);
+			var index = findIndex(state, {id: action.item.id});
+			
+			
+			if(index !== undefined) {
+				state[index] = action.item;
+				console.log(state[index]);
+			}
+
 			return uniqBy([...state, action.item], 'id');
 
 		case Action.UPDATE_CART:
