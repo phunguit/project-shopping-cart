@@ -10,8 +10,7 @@ class ItemForm extends Component {
 			quantity: 1,
 			price: this.props.price
 		};
-
-		this.handleChange = this.handleChange.bind(this);
+		
 	}
 
 	handleChange = (e) => {
@@ -26,16 +25,11 @@ class ItemForm extends Component {
 	handleClick = (e) => {
 		e.preventDefault();
 		var oldQuantity = 0;
-
+		
 		if(this.props.item.quantity !== undefined) {
 			oldQuantity = this.props.item.quantity;
 		}
 		
-		/*var quantity = this.state.quantity + oldQuantity;
-		if(this.state.quantity < oldQuantity) {
-
-		}*/
-
 		this.props.item.quantity = this.state.quantity + oldQuantity;
 		this.props.addToCart(this.props.item);
 	}
@@ -60,6 +54,13 @@ class ItemForm extends Component {
 
 }
 
+const mapStateToProps = (state) => {
+	var { cartItems } = state;
+	return {
+		cartItems	
+	}
+}
+
 const mapDispatchToProps = (dispatch) => {
 
 	return {
@@ -70,4 +71,4 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(null, mapDispatchToProps)(ItemForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemForm);

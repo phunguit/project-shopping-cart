@@ -1,3 +1,5 @@
+import * as Action 	from '../constants/Actions';
+import { findIndex, reject } from 'lodash';
 const uuidv4 = require('uuid/v4');
 
 var defaultState = [
@@ -36,7 +38,30 @@ var defaultState = [
 ];
 
 const items = (state = defaultState, action) => {
-	return state;
+
+	switch(action.type) {
+		case Action.UPDATE_QUANTITY:
+
+			var id = action.item[0].id;
+			var index = findIndex(state, {id});
+
+			state = reject(state, {id});
+
+			state.splice(index, 0, {
+				id,
+				name: action.item[0].name,
+				description: action.item[0].description,
+				price: action.item[0].price,
+				inventory: +action.item[0].inventory,
+				quantity: 0,
+				image: action.item[0].image
+			});
+			return state;
+
+
+		default:
+			return state;
+	}
 }
 
 export default items;

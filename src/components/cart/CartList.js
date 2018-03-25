@@ -7,6 +7,8 @@ class CartList extends Component {
 	render() {
 		var { cartItems }	= this.props;
 		var statusCart		= null;
+		var totalItems		= cartItems.length;
+		var cartTotal		= 0;
 
 		if(cartItems.length === 0) {
 			statusCart = <tr><th colSpan={6}>Empty product in your cart</th></tr>;
@@ -17,7 +19,10 @@ class CartList extends Component {
 				<CartItem key={index} item={item} />
 			);
 		});
-		//var cartEleItems = null;
+
+		for(var i = 0; i < cartItems.length; i++) {
+			cartTotal += cartItems[i].quantity*cartItems[i].price;
+		}
 
 		return (
 			<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -40,15 +45,15 @@ class CartList extends Component {
 	                    {/* CART FOOTER */}
 	                    {statusCart}
 	                    <tr>
-	                      <td colSpan={4}>There are <b>5</b> items in your shopping cart.</td>
-	                      <td colSpan={2} className="total-price text-left">12 USD</td>
+	                      <td colSpan={4}>There are <b>{totalItems}</b> items in your shopping cart.</td>
+	                      <td colSpan={2} className="total-price text-left">{cartTotal} USD</td>
 	                    </tr>
 	                  </tfoot>
 	                </table>
 	              </div>
 	            </div>
 	            <div className="alert alert-success" role="alert" id="mnotification">Updated <b>ivysaur</b></div>
-	          </div>
+          	</div>
 		)
 	}
 
