@@ -1,5 +1,5 @@
 import * as Action 	from '../constants/Actions'; 
-import { uniq, reject, findIndex, uniqBy }		from 'lodash';
+import { reject, findIndex, uniqBy }		from 'lodash';
 var defaultState = [];
 
 
@@ -7,13 +7,10 @@ const cartItems = (state = defaultState, action) => {
 	switch(action.type) {
 
 		case Action.ADD_TO_CART:
-			console.log(action.item);
-			var index = findIndex(state, {id: action.item.id});
-			
+			var index = findIndex(state, {id: action.item.id});	
 			
 			if(index !== undefined) {
 				state[index] = action.item;
-				console.log(state[index]);
 			}
 
 			return uniqBy([...state, action.item], 'id');

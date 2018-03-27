@@ -30,19 +30,13 @@ class ItemForm extends Component {
 		var itemFromCart = filter(this.props.cartItems, (item, index) => {
 			return item.id === this.props.item.id;
 		});
-
+		
 		if(itemFromCart.length > 0) {
-			//console.log(itemFromCart[0].quantity);
 			oldQuantity = itemFromCart[0].quantity;
 		}
-
-		/*if(this.props.item.quantity !== undefined) {
-			oldQuantity = this.props.item.quantity;
-		}*/
 		
 		this.props.item.quantity = this.state.quantity + oldQuantity;
-		this.props.addToCart(this.props.item);
-		
+		this.props.addToCart(this.props.item);		
 	}
 
 	render() {
