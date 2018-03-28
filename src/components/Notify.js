@@ -4,9 +4,7 @@ class Notify extends Component {
 
 	render() {
 		return (
-			<div>
-				<h2>Product List</h2>
-			</div>
+			<div className="alert alert-success" role="alert" id="mnotification">Updated <b>ivysaur</b></div>
 		);
 	}
 
