@@ -1,29 +1,36 @@
 import * as Actions from '../constants/Actions'
 
-export const AcAddToCart = (item) => {
+export const AcGetProductList = (item) => {
 	return {
-		type: Actions.ADD_TO_CART,
+		type: Actions.PRODUCT_LIST,
 		item
 	}
 }
 
-export const AcUpdateCart = (item) => {
+export const AcBuyProduct = (item) => {
 	return {
-		type: Actions.UPDATE_CART,
+		type: Actions.BUY_PRODUCT,
 		item
 	}
 }
 
-export const AcDelete = (id) => {
+export const AcUpdateProduct = (id) => {
 	return {
-		type: Actions.DELETE_ITEM,
+		type: Actions.UPDATE_PRODUCT,
 		id
 	}
 }
 
-export const AcUpdateQuantity = (item) => {
+export const AcRemoveProduct = (item) => {
 	return {
-		type: Actions.UPDATE_QUANTITY,
+		type: Actions.REMOVE_PRODUCT,
 		item
+	}
+}
+
+export const AcChangeNotify = (string) => {
+	return {
+		type: Actions.CHANGE_NOTYFY,
+		string
 	}
 }

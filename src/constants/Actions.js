@@ -1,4 +1,5 @@
-export const ADD_TO_CART 		= 'ADD_TO_CART';
-export const UPDATE_CART 		= 'UPDATE_CART';
-export const DELETE_ITEM 		= 'DELETE_ITEM';
-export const UPDATE_QUANTITY 	= 'UPDATE_QUANTITY';
+export const PRODUCT_LIST 		= 'PRODUCT_LIST';
+export const BUY_PRODUCT 		= 'BUY_PRODUCT';
+export const UPDATE_PRODUCT 	= 'UPDATE_PRODUCT';
+export const REMOVE_PRODUCT 	= 'REMOVE_PRODUCT';
+export const CHANGE_NOTYFY 		= 'CHANGE_NOTYFY';
