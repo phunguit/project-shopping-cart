@@ -2,4 +2,4 @@ export const PRODUCT_LIST 		= 'PRODUCT_LIST';
 export const BUY_PRODUCT 		= 'BUY_PRODUCT';
 export const UPDATE_PRODUCT 	= 'UPDATE_PRODUCT';
 export const REMOVE_PRODUCT 	= 'REMOVE_PRODUCT';
-export const CHANGE_NOTYFY 		= 'CHANGE_NOTYFY';
+export const CHANGE_NOTIFY 		= 'CHANGE_NOTIFY';

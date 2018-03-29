@@ -28,9 +28,9 @@ export const AcRemoveProduct = (item) => {
 	}
 }
 
-export const AcChangeNotify = (string) => {
+export const AcChangeNotify = (content) => {
 	return {
-		type: Actions.CHANGE_NOTYFY,
-		string
+		type: Actions.CHANGE_NOTIFY,
+		content
 	}
 }
