@@ -1,4 +1,5 @@
-import * as types from '../constants/Actions';
+import * as types 	from '../constants/Actions';
+import * as configs from '../constants/Config';
 
 var defaultState 	= [];
 var cartItems		= JSON.parse(localStorage.getItem(configs.CARTS_FROM_LOCAL_STOGARE));

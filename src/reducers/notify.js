@@ -1,7 +1,7 @@
 import * as types from '../constants/Actions';
-import config from '../constants/Config';
+import * as configs from '../constants/Config';
 
-var defaultState = config.NOTI_READY_TO_BUY;
+var defaultState = configs.NOTI_READY_TO_BUY;
 
 const notify = (state = defaultState, action) => {
 	switch(action.type) {
@@ -12,4 +12,4 @@ const notify = (state = defaultState, action) => {
 	}
 }
 
-default export notify;
+export default notify;
