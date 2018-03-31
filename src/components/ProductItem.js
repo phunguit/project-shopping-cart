@@ -15,11 +15,22 @@ class ProductItem extends Component {
 		        <div className="media-body">
 		          <h4 className="media-heading">{product.name}</h4>
 		          <p>{product.description}</p>
-		          <input name="quantity-product-1" type="number" defaultValue={1} min={1} />
-		          <a data-product={1} className="price"> {product.price} USD </a>
+		          {this.showPrice(product)}
 		        </div>
 	      	</div>
 		);
+	}
+
+	showPrice(product) {
+		var xhtml = <span className="price"> {product.price} USD</span>
+		if(product.canBuy) {
+			xhtml = <p>
+						<input name="quantity-product-1" type="number" defaultValue={1} min={1} />
+		          		<a data-product={1} className="price"> {product.price} USD </a>
+		          	</p>
+		}
+
+		return xhtml;
 	}
 
 }

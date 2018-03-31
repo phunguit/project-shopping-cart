@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect }			from 'react-redux';
 
 import ProductItem 			from './ProductItem';
-import ProductItemNoSale 	from './ProductItemNoSale';
 import * as configs			from '../constants/Config'
 
 class ProductList extends Component {
@@ -26,12 +25,8 @@ class ProductList extends Component {
 
 		if(products.length !== 0) {
 			eleProductList = products.map((product, index) => {
-				var productItem = <ProductItem key={index} product={product} />;
-				if(!product.canBuy) {
-					productItem = <ProductItemNoSale key={index} product={product} />
-				}
 				return (
-					productItem			
+					<ProductItem key={index} product={product} />
 				);
 			});
 		}
