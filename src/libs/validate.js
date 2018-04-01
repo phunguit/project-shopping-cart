@@ -6,7 +6,7 @@ class Validate {
 	}
 
 	static checkQty(value) {
-		if(value < 0 || Validate.isNumber(value) === false) {
+		if(value <= 0 || Validate.isNumber(value) === false) {
 			return false;
 		}
 		return true;

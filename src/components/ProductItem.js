@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { connect }			from 'react-redux';
+
 import Validate				from '../libs/validate';
+import { AcChangeNotify }	from '../actions/index';
+import * as configs			from '../constants/Config';
 
 class ProductItem extends Component {
 
@@ -7,7 +11,7 @@ class ProductItem extends Component {
 		super(props);
 
 		this.state = {
-			qty: 0
+			qty: 1
 		}
 	}
 
@@ -23,15 +27,16 @@ class ProductItem extends Component {
 
 	handleClick = (product) => {
 		var qty = this.state.qty;
-		
-		console.log(product);
 
 		if(Validate.checkQty(qty) === false) {
-			console.log('Invalid');
+			this.props.updateNotify(configs.NOTI_GREATER_THAN_ONE);
 		} else {
-			console.log('Valid');
+			this.props.updateNotify(configs.NOTI_ACT_ADD);
 		}
 
+		/*this.setState({
+			qty: 1
+		});*/
 	}
 
 	render() {
@@ -58,7 +63,7 @@ class ProductItem extends Component {
 		if(product.canBuy) {
 			xhtml = <p>
 						<input name="qty" onChange={this.handleChange} type="number" value={this.state.qty} min={1} />
-		          		<a href='' onClick={this.handleClick(product)} className="price"> {product.price} USD </a>
+		          		<a href="javascript:void(0);" onClick={() => this.handleClick(product)} className="price"> {product.price} USD </a>
 		          	</p>
 		}
 
@@ -67,4 +72,12 @@ class ProductItem extends Component {
 
 }
 
-export default ProductItem;
+var mapDispatchToProps = (dispatch) => {
+	return {
+		updateNotify: (message) => {
+			dispatch(AcChangeNotify(message));
+		}
+	}
+}
+
+export default connect(null, mapDispatchToProps)(ProductItem);
