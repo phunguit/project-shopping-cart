@@ -1,6 +1,38 @@
 import React, { Component } from 'react';
+import Validate				from '../libs/validate';
 
 class ProductItem extends Component {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			qty: 0
+		}
+	}
+
+	handleChange = (e) => {
+		var target	= e.target;
+		var name 	= target.name;
+		var value	= target.value;
+
+		this.setState({
+			[name]: value
+		})
+	}
+
+	handleClick = (product) => {
+		var qty = this.state.qty;
+		
+		console.log(product);
+
+		if(Validate.checkQty(qty) === false) {
+			console.log('Invalid');
+		} else {
+			console.log('Valid');
+		}
+
+	}
 
 	render() {
 		var { product } = this.props;
@@ -25,8 +57,8 @@ class ProductItem extends Component {
 		var xhtml = <span className="price"> {product.price} USD</span>
 		if(product.canBuy) {
 			xhtml = <p>
-						<input name="quantity-product-1" type="number" defaultValue={1} min={1} />
-		          		<a data-product={1} className="price"> {product.price} USD </a>
+						<input name="qty" onChange={this.handleChange} type="number" value={this.state.qty} min={1} />
+		          		<a href='' onClick={this.handleClick(product)} className="price"> {product.price} USD </a>
 		          	</p>
 		}
 
