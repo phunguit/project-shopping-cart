@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect }			from 'react-redux';
 
 import Validate				from '../libs/validate';
-import { AcChangeNotify }	from '../actions/index';
+import { AcChangeNotify, AcBuyProduct }	from '../actions/index';
 import * as configs			from '../constants/Config';
 
 class ProductItem extends Component {
@@ -26,17 +26,18 @@ class ProductItem extends Component {
 	}
 
 	handleClick = (product) => {
-		var qty = this.state.qty;
+		var qty = +this.state.qty;
 
 		if(Validate.checkQty(qty) === false) {
 			this.props.updateNotify(configs.NOTI_GREATER_THAN_ONE);
+			return;
 		} else {
 			this.props.updateNotify(configs.NOTI_ACT_ADD);
 		}
-
-		/*this.setState({
+		this.props.addToCart(product, qty);
+		this.setState({
 			qty: 1
-		});*/
+		});
 	}
 
 	render() {
@@ -76,6 +77,9 @@ var mapDispatchToProps = (dispatch) => {
 	return {
 		updateNotify: (message) => {
 			dispatch(AcChangeNotify(message));
+		},
+		addToCart: (product, qty) => {
+			dispatch(AcBuyProduct(product, qty));
 		}
 	}
 }

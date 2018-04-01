@@ -15,7 +15,7 @@ var defaultState 	= [
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dicta asperiores veniam repellat unde debitis quisquam magnam magni ut deleniti!',
 		price: 12,
 		image: 'aplus-media.jpg',
-		canBuy: false
+		canBuy: true
 	},
 	{
 		id: 'robofigcombo',
@@ -23,7 +23,7 @@ var defaultState 	= [
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dicta asperiores veniam repellat unde debitis quisquam magnam magni ut deleniti!',
 		price: 12,
 		image: 'robo_fig_combo.jpg',
-		canBuy: true
+		canBuy: false
 	},
 	{
 		id: 'targetleapfrog',

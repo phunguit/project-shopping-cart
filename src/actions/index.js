@@ -7,10 +7,11 @@ export const AcGetProductList = (item) => {
 	}
 }
 
-export const AcBuyProduct = (item) => {
+export const AcBuyProduct = (item, qty) => {
 	return {
 		type: Actions.BUY_PRODUCT,
-		item
+		item,
+		qty
 	}
 }
 
