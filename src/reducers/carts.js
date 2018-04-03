@@ -21,7 +21,7 @@ const carts = (state = defaultState, action) => {
 			} else {
 				state[index].qty += qty;
 			}
-			console.log(state);			
+			localStorage.setItem(configs.CARTS_FROM_LOCAL_STOGARE, JSON.stringify(state));
 			return [...state];
 		default:
 			return state;

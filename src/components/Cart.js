@@ -36,11 +36,12 @@ class Cart extends Component {
 	}
 
 	showElementBody(items) {
-		var xhtml = null;
-
+		var xhtml = null;		
 		if(items.length !== 0) {
 			xhtml = items.map((item, index) => {
-				<CartItem />
+				return (
+					<CartItem key={index} cartItem={item} />
+				);
 			});
 		}
 		return <tbody id="my-cart-body">{xhtml}</tbody>;
