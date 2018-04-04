@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect }			from 'react-redux';
+
+import { AcRemoveProduct, AcChangeNotify }	from '../actions/index';
+import * as configs			from '../constants/Config';
 
 class CartItem extends Component {
 
@@ -19,21 +23,26 @@ class CartItem extends Component {
 		})
 	}
 
+	handleDelete = (item) => {
+		this.props.deleteItem(item);
+		this.props.changeNotify(configs.NOTI_ACT_DELETE);
+	}
+
 	render() {
-		
-		var { item, qty } = this.props.cartItem;
+		var { item, qty } 	= this.props.cartItem;
+		var { index	}		= this.props;
 		qty = this.state.qty > 0 ? this.state.qty : qty;
 
 		return (
 			<tr>
-	            <th scope="row">1</th>
+	            <th scope="row">{ index }</th>
 	            <td>{ item.name }</td>
 	            <td>{item.price} USD</td>
 	            <td><input onChange={this.handleChange} name="qty" type="number" value={ qty } min={1} /></td>
 	            <td>{this.getSubTotal(item.price, qty)}</td>
 	            <td>
 	              <a className="label label-info update-cart-item" data-product>Update</a>
-	              <a className="label label-danger delete-cart-item" data-product>Delete</a>
+	              <a href="javascript:void(0);" onClick={() => this.handleDelete(item)} className="label label-danger delete-cart-item">Delete</a>
 	            </td>
 	        </tr>
 		);
@@ -45,4 +54,22 @@ class CartItem extends Component {
 
 }
 
-export default CartItem;
+var mapStateToProps = (state) => {
+
+	return {
+		test: state.carts
+	}
+}
+
+var mapDispatchToProps = (dispatch) => {
+	return {
+		deleteItem: item => {
+			dispatch(AcRemoveProduct(item));
+		},
+		changeNotify: message => {
+			dispatch(AcChangeNotify(message));
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartItem);

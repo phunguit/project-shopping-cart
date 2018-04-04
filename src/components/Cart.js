@@ -8,7 +8,7 @@ class Cart extends Component {
 
 	render() {
 		var { items } = this.props;
-
+		//console.log(items);
 		return (
 			<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 			  <div className="panel panel-danger"> 
@@ -41,7 +41,7 @@ class Cart extends Component {
 		if(items.length !== 0) {
 			xhtml = items.map((item, index) => {
 				return (
-					<CartItem key={index} cartItem={item} />
+					<CartItem key={index} cartItem={item} index={index} />
 				);
 			});
 		}
