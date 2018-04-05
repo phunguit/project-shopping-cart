@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect }			from 'react-redux';
 
-import { AcRemoveProduct, AcChangeNotify }	from '../actions/index';
+import { AcRemoveProduct, AcChangeNotify, AcUpdateProduct }	from '../actions/index';
 import * as configs			from '../constants/Config';
 
 class CartItem extends Component {
@@ -28,6 +28,11 @@ class CartItem extends Component {
 		this.props.changeNotify(configs.NOTI_ACT_DELETE);
 	}
 
+	handleUpdate = (item, qty) => {
+		this.props.updateItem(item, qty);
+		this.props.changeNotify(configs.NOTI_ACT_UPDATE);
+	}
+
 	render() {
 		var { item, qty } 	= this.props.cartItem;
 		var { index	}		= this.props;
@@ -41,7 +46,7 @@ class CartItem extends Component {
 	            <td><input onChange={this.handleChange} name="qty" type="number" value={ qty } min={1} /></td>
 	            <td>{this.getSubTotal(item.price, qty)}</td>
 	            <td>
-	              <a className="label label-info update-cart-item" data-product>Update</a>
+	              <a href="javascript:void(0);" onClick={() => this.handleUpdate(item, qty)} className="label label-info update-cart-item" data-product>Update</a>
 	              <a href="javascript:void(0);" onClick={() => this.handleDelete(item)} className="label label-danger delete-cart-item">Delete</a>
 	            </td>
 	        </tr>
@@ -68,6 +73,9 @@ var mapDispatchToProps = (dispatch) => {
 		},
 		changeNotify: message => {
 			dispatch(AcChangeNotify(message));
+		},
+		updateItem: (item, qty) => {
+			dispatch(AcUpdateProduct(item, qty));
 		}
 	}
 }

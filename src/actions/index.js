@@ -15,10 +15,11 @@ export const AcBuyProduct = (item, qty) => {
 	}
 }
 
-export const AcUpdateProduct = (id) => {
+export const AcUpdateProduct = (item, qty) => {
 	return {
 		type: Actions.UPDATE_PRODUCT,
-		id
+		item,
+		qty
 	}
 }
 

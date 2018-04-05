@@ -9,10 +9,10 @@ defaultState		= (cartItems !== null && cartItems.length !== 0) ? cartItems : def
 
 const carts = (state = defaultState, action) => {
 	var { item, qty } = action;
-
+	var index = -1;
 	switch(action.type) {
 		case types.BUY_PRODUCT:			
-			var index = findIndex(state, (stateItem) => {
+			index = findIndex(state, (stateItem) => {
 				return stateItem.item.id  === item.id;
 			});
 			
@@ -30,6 +30,16 @@ const carts = (state = defaultState, action) => {
 			});
 			localStorage.setItem(configs.CARTS_FROM_LOCAL_STOGARE, JSON.stringify(state));
 			return [...state];
+
+		case types.UPDATE_PRODUCT:
+			index = findIndex(state, (stateItem) => {
+				return stateItem.item.id  === item.id;
+			});
+			if(index >= 0) {
+				state[index].qty = +qty;	
+			}
+			localStorage.setItem(configs.CARTS_FROM_LOCAL_STOGARE, JSON.stringify(state));
+			return [...state]
 		default:
 			return state;
 	}
