@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component }   from 'react';
 import '../App.css';
-import Title 				from './Title';
-import ProductList 			from './ProductList';
-import Cart 				from './Cart';
+import Title 				           from './Title';
+import Cart 				          from './Cart';
+import ProductsContainer       from '../containers/ProductsContainer';
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
       	<Title />
 
       	<div className="row">
-			<ProductList />
+			<ProductsContainer />
 			<Cart />
 		</div>
       </div>
